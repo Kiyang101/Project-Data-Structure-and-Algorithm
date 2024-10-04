@@ -78,7 +78,7 @@ class BST:
                     print("left: None")            
                 print("\n")
                 
-                if self.__left >= len(self.__tree) or not self.__tree[self.__left]:
+                if self.__left >= len(self.__tree) or self.__tree[self.__left] is None:
                     return self.__tree[self.__current]
                 else:
                     self.__goLeft()
@@ -106,7 +106,7 @@ class BST:
                     print("right: None")
                 print("\n")
                 
-                if self.__right >= len(self.__tree) or not self.__tree[self.__right]:
+                if self.__right >= len(self.__tree) or self.__tree[self.__right] is None:
                     return self.__tree[self.__current]
                 else:
                     self.__goRight()
@@ -115,7 +115,7 @@ class BST:
             return self.__tree[self.__current]
         
         return False
-        
+
 def menu(Tree):
     err = ""
     while True:
@@ -143,7 +143,7 @@ def menu(Tree):
             err = "\n** The input must be a number !! **\n"
             clear_screen()
             continue
-    
+
 def main():
     Tree = BST()
     while True:
@@ -190,7 +190,7 @@ def main():
                 
             Tree.setTree(tree)
             continue
-        
+
         # if (select == 2): # see tree
         #     clear_screen()
         #     print("** Tree **\n")
@@ -247,7 +247,7 @@ def main():
             input("\nEnter to exit\n")
             continue
         
-        if(select == 99):
+        if(select == 99): # set test array
             # test array
             test = ["Harmony", "Dream", "Peace", "Butterfly", "Energy"," Journey", "Rainbow", "Apple", "Courage", None, "Garden", None, "Nature", "Quest", "Treasure"] 
             Tree.setTree(test)
@@ -255,4 +255,3 @@ def main():
             
 if __name__ == "__main__":
     main()
-    
