@@ -8,7 +8,7 @@ class BST:
         # test = ["Harmony", "Dream", "Peace", "Butterfly", "Energy"," Journey", "Rainbow", "Apple", "Courage", None, "Garden", None, "Nature", "Quest", "Treasure"] # test array
         # self.__tree = test # set testing array
         
-        # self.__tree = []
+        self.__tree = []
         self.__current = 0
         self.__left = 1
         self.__right = 2
