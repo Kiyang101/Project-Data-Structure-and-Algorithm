@@ -207,14 +207,15 @@ def main():
                 print("** Tree **\n")
                 print(Tree.getTree(), "\n")
                 print("** Find Value **\n")
+                print("Type 0 to exit\n")
                 
                 if len(err)>0:
                     print(err)
                     err = ""
                     
-                print("Type 0 to exit\n")
                 target = input("Input value: ")
-                    
+                print("\n")
+                
                 if target == "0":
                     break
                     
@@ -226,9 +227,9 @@ def main():
                
             if target == '0': continue
             if (Tree.findValue(target)):
-                print("\nFound: ", target)
+                print("Found: ", target)
             else:
-                print("\nNot found: ", target)
+                print("Not found: ", target)
                 
             input("\nEnter to exit")
             continue
