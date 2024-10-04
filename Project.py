@@ -5,10 +5,12 @@ def clear_screen():
 
 class BST:
     def __init__(self):
-        # test = ["Harmony", "Dream", "Peace", "Butterfly", "Energy"," Journey", "Rainbow", "Apple", "Courage", None, "Garden", None, "Nature", "Quest", "Treasure"] # test array
-        # self.__tree = test # set testing array
+        # test array
+        test = ["Harmony", "Dream", "Peace", "Butterfly", "Energy"," Journey", "Rainbow", "Apple", "Courage", None, "Garden", None, "Nature", "Quest", "Treasure"] 
+         # set test array
+        self.__tree = test
         
-        self.__tree = []
+        # self.__tree = []
         self.__current = 0
         self.__left = 1
         self.__right = 2
@@ -30,31 +32,36 @@ class BST:
         return self.__tree
 
     def findValue(self, target):
-        if not target:
+        if not any(target.lower() in item.lower() for item in self.__tree if item is not None):
             return False
-        
+                
         self.__current = 0
         self.__left = 1
         self.__right = 2
-        try:
-            while self.__tree[self.__current]:
-                print("current:", self.__tree[self.__current])
-                print("left: ", self.__tree[self.__left])
-                print("right: ", self.__tree[self.__right])
-                print("\n")
-                
-                if (target.lower() == self.__tree[self.__current].lower()):
-                    return True
-                
-                if(target.lower() < self.__tree[self.__current].lower()):
-                    self.__goLeft()
-                else:
-                    self.__goRight()
-        except IndexError:
-            return True
         
-        except:
-            return False
+        while self.__current < len(self.__tree)-1 and self.__tree[self.__current]:
+            
+            print("current:", self.__tree[self.__current])
+            if self.__left < len(self.__tree):
+                print("left:", self.__tree[self.__left])
+            else:
+                print("left: None")
+        
+            if self.__right < len(self.__tree):
+                print("right:", self.__tree[self.__right])
+            else:
+                print("right: None")
+            print("\n")
+                
+            if (target.lower() == self.__tree[self.__current].lower()):
+                return True
+                
+            if(target.lower() < self.__tree[self.__current].lower()):
+                self.__goLeft()
+            else:
+                self.__goRight()
+        
+        return False
     
     def findMin(self):
         self.__current = 0
@@ -63,9 +70,12 @@ class BST:
         
         try:
             while self.__tree[self.__current]:
+                
                 print("current:", self.__tree[self.__current])
-                print("left: ", self.__tree[self.__left])
-                print("right: ", self.__tree[self.__right])
+                if self.__left < len(self.__tree):
+                    print("left:", self.__tree[self.__left])
+                else:
+                    print("left: None")            
                 print("\n")
                 
                 if self.__left >= len(self.__tree) or not self.__tree[self.__left]:
@@ -75,9 +85,8 @@ class BST:
                     
         except IndexError :
             return self.__tree[self.__current]
-        
-        except:
-            return False
+            
+        return False
         
     def findMax(self):
         self.__current = 0
@@ -86,8 +95,15 @@ class BST:
         try:
             while self.__tree[self.__current]:
                 print("current:", self.__tree[self.__current])
-                print("left: ", self.__tree[self.__left])
-                print("right: ", self.__tree[self.__right])
+                if self.__left < len(self.__tree):
+                    print("left:", self.__tree[self.__left])
+                else:
+                    print("left: None")
+            
+                if self.__right < len(self.__tree):
+                    print("right:", self.__tree[self.__right])
+                else:
+                    print("right: None")
                 print("\n")
                 
                 if self.__right >= len(self.__tree) or not self.__tree[self.__right]:
@@ -101,18 +117,29 @@ class BST:
         except:
             return False
         
-def menu():
+def menu(Tree):
+    err = ""
     while True:
         try:
+            print("** Tree **\n")
+            print(Tree.getTree(), "\n")
+            
             print("** Menu **\n")
             print("1.Set tree (It will remove old tree)")
-            print("2.See tree")
-            print("3.Find value")
-            print("4.Find min")
-            print("5.Find max")
+            # print("2.See tree")
+            print("2.Find value")
+            print("3.Find min")
+            print("4.Find max")
+            
+            if len(err)>0:
+                print(err)
+                err = ""
+                
             select = int(input("\n-"))
             return select
+        
         except ValueError:
+            err = "\n// The input must be a number !! //\n"
             clear_screen()
             continue
     
@@ -120,18 +147,22 @@ def main():
     Tree = BST()
     while True:
         clear_screen() 
-        select = menu()
+        select = menu(Tree)
         if (select == 1): # set tree
             clear_screen()
             Tree.setTree([])
             tree = []
-            
+            err = ""
             while True:
                 clear_screen()
                 print("** Tree **\n")
                 print(tree, "\n")
                 print("Type 1 to add None")
                 print("Type 0 to exit\n")
+                
+                if len(err) > 0: 
+                    print(err)
+                    err = ""
                 
                 data = input(f"Input data: ")
                 print("\n")
@@ -143,10 +174,16 @@ def main():
                
                 checkSpaces = "".join(data.split())
                 if not data or checkSpaces == "":
-                   continue
+                    err = "** Input must be a character only **\n"          
+                    continue
+                
+                if not data.isalpha():
+                    err = "** Input must be a character only **\n"
+                    continue
                     
                 try:
                     data = int(data)
+                    err = "** Input must be a character only **\n" 
                     continue
                 
                 except ValueError:
@@ -155,27 +192,39 @@ def main():
             Tree.setTree(tree)
             continue
         
-        if (select == 2): # see tree
-            clear_screen()
-            print("** Tree **\n")
-            print(Tree.getTree(), "\n")
-            print("Enter to exit\n")
-            input()
-            continue
+        # if (select == 2): # see tree
+        #     clear_screen()
+        #     print("** Tree **\n")
+        #     print(Tree.getTree(), "\n")
+        #     print("Enter to exit\n")
+        #     input()
+        #     continue
         
-        if(select == 3): # find value
+        if(select == 2): # find value
+            err = ""
             while  True:
                 clear_screen()
                 print("** Tree **\n")
                 print(Tree.getTree(), "\n")
                 print("** Find Value **\n")
+                
+                if len(err)>0:
+                    print(err)
+                    err = ""
+                    
+                print("Type 0 to exit\n")
                 target = input("Input value: ")
+                    
+                if target == "0":
+                    break
                     
                 if target.isalpha():
                     break
                 else:
+                    err = "** Input must be a character only **\n"
                     continue
                
+            if target == '0': continue
             if (Tree.findValue(target)):
                 print("\nFound: ", target)
             else:
@@ -184,15 +233,17 @@ def main():
             input("\nEnter to exit")
             continue
                 
-        if(select == 4): # find min
+        if(select == 3): # find min
             clear_screen()
+            print("** Find Minimum value **\n")
             print(f"\nMinimum value: {Tree.findMin()}")
             print("\nEnter to exit\n")
             input()
             continue
         
-        if(select == 5): # find max
+        if(select == 4): # find max
             clear_screen()
+            print("** Find Maximum value **\n")
             print(f"\nMaximum value: {Tree.findMax()}")
             print("\nEnter to exit\n")
             input()
