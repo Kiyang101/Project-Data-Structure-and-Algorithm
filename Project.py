@@ -5,8 +5,8 @@ def clear_screen():
 
 class BST:
     def __init__(self):
-        test = ["Harmony", "Dream", "Peace", "Butterfly", "Energy"," Journey", "Rainbow", "Apple", "Courage", None, "Garden", None, "Nature", "Quest", "Treasure"] # test array
-        self.__tree = test # set testing array
+        # test = ["Harmony", "Dream", "Peace", "Butterfly", "Energy"," Journey", "Rainbow", "Apple", "Courage", None, "Garden", None, "Nature", "Quest", "Treasure"] # test array
+        # self.__tree = test # set testing array
         
         # self.__tree = []
         self.__current = 0
