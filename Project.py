@@ -125,6 +125,7 @@ def main():
             clear_screen()
             Tree.setTree([])
             tree = []
+            
             while True:
                 clear_screen()
                 print("** Tree **\n")
