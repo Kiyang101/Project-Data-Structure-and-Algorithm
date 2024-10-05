@@ -94,12 +94,8 @@ class BST:
         self.__right = 2
         try:
             while self.__tree[self.__current]:
+                
                 print("current:", self.__tree[self.__current])
-                if self.__left < len(self.__tree):
-                    print("left:", self.__tree[self.__left])
-                else:
-                    print("left: None")
-            
                 if self.__right < len(self.__tree):
                     print("right:", self.__tree[self.__right])
                 else:
