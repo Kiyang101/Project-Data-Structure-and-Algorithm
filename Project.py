@@ -15,7 +15,7 @@ class BST:
         self.__current = 0
         self.__left = 1
         self.__right = 2
-
+        
     def __goLeft(self):
         self.__current = self.__left
         self.__left = self.__current * 2 + 1
@@ -70,7 +70,9 @@ class BST:
         self.__left = 1
         self.__right = 2
         
+        print("** Tree **\n")
         print(self.__tree)
+        print("\n")
         
         if not self.__tree :
             print("\n** Tree is empty **")
@@ -90,7 +92,7 @@ class BST:
                     return self.__tree[self.__current]
                 else:
                     self.__goLeft()
-                    
+                
         except IndexError :
             return self.__tree[self.__current]
             
@@ -100,6 +102,10 @@ class BST:
         self.__current = 0
         self.__left = 1
         self.__right = 2
+        
+        print("** Tree **\n")
+        print(self.__tree)
+        print("\n")
         
         if not self.__tree :
             print("\n** Tree is empty **")
@@ -155,6 +161,7 @@ def menu(Tree):
 
 def main():
     Tree = BST()
+    
     while True:
         clear_screen() 
         select = menu(Tree)
