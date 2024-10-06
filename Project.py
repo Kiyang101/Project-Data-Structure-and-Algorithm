@@ -4,7 +4,7 @@ def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
 
 class BST:
-    #Constructors
+    
     def __init__(self):
         # test array
         # test = ["Harmony", "Dream", "Peace", "Butterfly", "Energy"," Journey", "Rainbow", "Apple", "Courage", None, "Garden", None, "Nature", "Quest", "Treasure"] 
