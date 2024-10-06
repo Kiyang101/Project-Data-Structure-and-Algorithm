@@ -4,6 +4,7 @@ def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
 
 class BST:
+    #Constructors
     def __init__(self):
         # test array
         # test = ["Harmony", "Dream", "Peace", "Butterfly", "Energy"," Journey", "Rainbow", "Apple", "Courage", None, "Garden", None, "Nature", "Quest", "Treasure"] 
@@ -34,7 +35,7 @@ class BST:
     def findValue(self, target):
         if not any(target.lower() in item.lower() for item in self.__tree if item is not None):
             return False
-                
+        
         self.__current = 0
         self.__left = 1
         self.__right = 2
@@ -42,6 +43,7 @@ class BST:
         while self.__current < len(self.__tree)-1 and self.__tree[self.__current] is not None:
             
             print("current:", self.__tree[self.__current])
+            
             if self.__left < len(self.__tree):
                 print("left:", self.__tree[self.__left])
             else:
@@ -68,6 +70,12 @@ class BST:
         self.__left = 1
         self.__right = 2
         
+        print(self.__tree)
+        
+        if not self.__tree :
+            print("\n** Tree is empty **")
+            return False
+        
         try:
             while self.__tree[self.__current]:
                 
@@ -92,6 +100,11 @@ class BST:
         self.__current = 0
         self.__left = 1
         self.__right = 2
+        
+        if not self.__tree :
+            print("\n** Tree is empty **")
+            return False
+        
         try:
             while self.__tree[self.__current]:
                 
@@ -251,3 +264,4 @@ def main():
             
 if __name__ == "__main__":
     main()
+    
